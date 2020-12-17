@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "679081063816",
+    "project_id": "teamdrt-280320",
+    "storage_bucket": "teamdrt-280320.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:679081063816:android:0b8ac481b3dd8cb258363d",
+        "android_client_info": {
+          "package_name": "com.teamdrt.teamdrt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "679081063816-9f59m6qqdt2aoh1gpbb16n6utdomaqkn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEDqqEseaPsl0cJinOXJCGOT3AchwgvF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "679081063816-9f59m6qqdt2aoh1gpbb16n6utdomaqkn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
