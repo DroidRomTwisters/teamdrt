@@ -1,8 +1,11 @@
 
 
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:teamdrt/Service/auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Home extends StatefulWidget {
 
@@ -11,8 +14,19 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  String user="";
+
+   _getUser() async{
+    SharedPreferences preferences=await SharedPreferences.getInstance();
+    setState(() {
+      user=preferences.getString("user");
+    });
+
+  }
+
   @override
   Widget build(BuildContext context) {
+     _getUser();
     return Container(
       child: Scaffold(
         //backgroundColor: Colors.black,
@@ -35,7 +49,7 @@ class _HomeState extends State<Home> {
             ],
 
           ),
-          body: Center(child: Text("Home"))
+          body: Center(child: Text("Hello Mr. "+user))
       ),
     );
   }

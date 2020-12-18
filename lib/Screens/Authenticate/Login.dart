@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:teamdrt/Service/auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   get user => null;
@@ -11,6 +12,13 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
+  _updateUser (String user) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString("user", user );
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -47,15 +55,15 @@ class _LoginState extends State<Login> {
                     child: ButtonTheme(
                       minWidth: double.infinity,
                       height: 50.0,
-
                       child: RaisedButton(
                         onPressed: () {
+                          _updateUser("admin");
                           final snackBar = SnackBar(
                             content: Text('Yet to be Implemented'),
                             action: SnackBarAction(
                               label: 'Okay',
                               onPressed: () {
-                                // Some code to undo the change.
+
                               },
                             ),
                           );
@@ -65,7 +73,6 @@ class _LoginState extends State<Login> {
                         },
                         color: Colors.greenAccent,
                         child: Text("Admin",
-
                           style: TextStyle(
                             color: Colors.white,
                             fontFamily: "Product Sans",
@@ -87,6 +94,7 @@ class _LoginState extends State<Login> {
                       height: 50.0,
                       child: RaisedButton(
                         onPressed: () {
+                          _updateUser("client");
                           final snackBar = SnackBar(
                             content: Text('Yet to be Implemented'),
                             action: SnackBarAction(
@@ -121,6 +129,7 @@ class _LoginState extends State<Login> {
                       height: 50.0,
                       child: RaisedButton(
                         onPressed: () {
+                          _updateUser("anonymous");
                           AuthService().signInAnon();
                         },
                         child: Text("Visitor",style: TextStyle(
