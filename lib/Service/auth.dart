@@ -1,4 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:teamdrt/Screens/Authenticate/Login.dart';
+import 'package:teamdrt/Screens/Authenticate/Login_Signup.dart';
 import 'package:teamdrt/models/user.dart';
 
 class AuthService{
@@ -14,6 +18,19 @@ class AuthService{
     return _auth.authStateChanges().map(_userFromFirebaseUser);
   }
 
+  Future signInWithEmail(String email,String password,BuildContext context) async{
+    try {
+      UserCredential result = await _auth.signInWithEmailAndPassword(email: email, password: password);
+      User user = result.user;
+     // Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
+      return _userFromFirebaseUser(user);
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
+
+
   //sign in anonymously
   Future signInAnon() async {
     try {
@@ -25,10 +42,6 @@ class AuthService{
       return null;
     }
   }
-
-  //signin using email and password
-
-  //signin using phone number
 
   Future signOut() async {
     try {

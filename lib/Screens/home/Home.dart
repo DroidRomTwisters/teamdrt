@@ -4,11 +4,16 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:teamdrt/Service/auth.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:teamdrt/Service/auth.dart';
 
 class Home extends StatefulWidget {
+  const Home({Key key}) : super(key: key);
 
+  static MaterialPageRoute get route => MaterialPageRoute(
+    builder: (context) => const Home(),
+  );
   @override
   _HomeState createState() => _HomeState();
 }

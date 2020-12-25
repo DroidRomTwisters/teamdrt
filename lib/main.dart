@@ -18,31 +18,12 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User2>.value(
       value: AuthService().user,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: Wrapper(),
         theme: ThemeData(
           primarySwatch: Colors.blueGrey,
+
         ),
-      ),
-    );
-  }
-}
-
-class _Check extends StatefulWidget{
-
-  @override
-  State<StatefulWidget> createState() => _checkState();
-}
-
-class _checkState extends State<_Check>{
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Scaffold(
-        //backgroundColor: Colors.black,
-        appBar: AppBar(
-          title: Text("Login",),
-        ),
-        body:Text("hello"),
       ),
     );
   }
