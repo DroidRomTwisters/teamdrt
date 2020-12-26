@@ -54,7 +54,7 @@ class _HomeState extends State<Home> {
             ],
 
           ),
-          body: Center(child: Text("Hello Mr. "+user))
+          body: Center(child: Text("Hello Mr. "))
       ),
     );
   }

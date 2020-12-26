@@ -136,14 +136,18 @@ class _State extends State<SignIn> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           GoogleAuthButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              AuthService().signInWithGoogle();
+                            },
                             darkMode: false,
                             style: AuthButtonStyle.icon,
                             borderRadius: 50,
                             buttonBorderColor: Colors.transparent,
                           ),
                           FacebookAuthButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              AuthService().signInWithFacebook();
+                            },
                             darkMode: false,
                             style: AuthButtonStyle.icon,
                             borderRadius: 50,

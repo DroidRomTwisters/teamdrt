@@ -42,6 +42,8 @@ dev_dependencies:
   animations: ^1.1.2
   auth_buttons: ^0.0.4
   font_awesome_flutter: ^8.11.0
+  google_sign_in: ^4.5.6
+  flutter_facebook_auth: ^1.0.2+2
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
