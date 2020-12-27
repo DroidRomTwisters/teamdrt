@@ -4,16 +4,17 @@ import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:teamdrt/config/pallete.dart';
 
-class BackgroundPainter extends CustomPainter{
-  BackgroundPainter({
-    Animation<double> animation
-  }):
-      bluePaint=Paint()..color=Palette.lightBlue
-  ..style = PaintingStyle.fill,
-      greyPaint=Paint()..color=Palette.darkBlue
-  ..style = PaintingStyle.fill,
-      orangePaint=Paint()..color=Palette.orange
-  ..style = PaintingStyle.fill,
+class BackgroundPainter extends CustomPainter {
+  BackgroundPainter({Animation<double> animation})
+      : bluePaint = Paint()
+          ..color = Palette.lightBlue
+          ..style = PaintingStyle.fill,
+        greyPaint = Paint()
+          ..color = Palette.darkBlue
+          ..style = PaintingStyle.fill,
+        orangePaint = Paint()
+          ..color = Palette.orange
+          ..style = PaintingStyle.fill,
         liquidAnim = CurvedAnimation(
           curve: Curves.elasticOut,
           reverseCurve: Curves.easeInBack,
@@ -42,7 +43,7 @@ class BackgroundPainter extends CustomPainter{
           curve: const SpringCurve(),
           reverseCurve: Curves.easeInCirc,
         ),
-  super(repaint: animation);
+        super(repaint: animation);
 
   final Animation<double> liquidAnim;
   final Animation<double> blueAnim;
@@ -62,26 +63,22 @@ class BackgroundPainter extends CustomPainter{
     paintOrange(size, canvas);
   }
 
-  void paintBLue(Canvas canvas, Size size){
-      final path=Path();
-      path.moveTo(size.width, size.height/2);
-      path.lineTo(size.width, 0);
-      path.lineTo(0, 0);
-      path.lineTo(0,
-          lerpDouble(0, size.height, blueAnim.value));
-      _addPointsToPath(path,[
-        Point(
-            lerpDouble(0, size.width/3, blueAnim.value),
-          lerpDouble(0, size.height, blueAnim.value)
-        ),
-        Point(
-            lerpDouble(size.width/2, size.width/4*3, liquidAnim.value),
-            lerpDouble(size.height/2, size.height/4*3, liquidAnim.value)
-        ),
-        Point(size.width, lerpDouble(size.height/2, size.height*3/4, liquidAnim.value))
-      ]);
+  void paintBLue(Canvas canvas, Size size) {
+    final path = Path();
+    path.moveTo(size.width, size.height / 2);
+    path.lineTo(size.width, 0);
+    path.lineTo(0, 0);
+    path.lineTo(0, lerpDouble(0, size.height, blueAnim.value));
+    _addPointsToPath(path, [
+      Point(lerpDouble(0, size.width / 3, blueAnim.value),
+          lerpDouble(0, size.height, blueAnim.value)),
+      Point(lerpDouble(size.width / 2, size.width / 4 * 3, liquidAnim.value),
+          lerpDouble(size.height / 2, size.height / 4 * 3, liquidAnim.value)),
+      Point(size.width,
+          lerpDouble(size.height / 2, size.height * 3 / 4, liquidAnim.value))
+    ]);
 
-      canvas.drawPath(path, bluePaint);
+    canvas.drawPath(path, bluePaint);
   }
 
   void paintGrey(Size size, Canvas canvas) {
@@ -156,7 +153,6 @@ class BackgroundPainter extends CustomPainter{
     }
   }
 
-
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) {
     return true;
@@ -194,6 +190,7 @@ class SpringCurve extends Curve {
     this.a = 0.15,
     this.w = 19.4,
   });
+
   final double a;
   final double w;
 

@@ -1,7 +1,7 @@
-
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_core/firebase_core.dart';
+
 import 'Screens/Wrapper/wrapper.dart';
 import 'Service/auth.dart';
 import 'models/user.dart';
@@ -11,7 +11,9 @@ Future<void> main() async {
   await Firebase.initializeApp();
   runApp(MyApp());
 }
-var colors=Colors.blueGrey;
+
+var colors = Colors.blueGrey;
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -22,11 +24,8 @@ class MyApp extends StatelessWidget {
         home: Wrapper(),
         theme: ThemeData(
           primarySwatch: Colors.blueGrey,
-
         ),
       ),
     );
   }
 }
-
-

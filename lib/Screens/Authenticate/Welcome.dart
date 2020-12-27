@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:teamdrt/config/pallete.dart';
 
 class welcomeScreen extends StatelessWidget {
-
   const welcomeScreen({
     Key key,
     @required this.onClicked,
@@ -54,9 +53,7 @@ class welcomeScreen extends StatelessWidget {
           padding: const EdgeInsets.only(top: 100),
           child: FloatingActionButton(
             elevation: 8.0,
-            onPressed: () => {
-              onClicked?.call()
-            },
+            onPressed: () => {onClicked?.call()},
             child: Icon(Icons.arrow_forward_rounded),
             backgroundColor: Palette.darkBlue,
           ),

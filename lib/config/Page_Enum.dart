@@ -1,5 +1,6 @@
-enum LOGIN_PAGE{
+enum LOGIN_PAGE {
   WELCOME,
+  OTP,
   EMAIL_PASS,
   PHONE,
   GOOGLE,

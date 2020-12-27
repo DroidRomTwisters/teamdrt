@@ -1,14 +1,11 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:teamdrt/Screens/Authenticate/Login_Signup.dart';
 import 'package:teamdrt/Screens/Authenticate/Welcome.dart';
 import 'package:teamdrt/Screens/Authenticate/Widgets/Sign%20In.dart';
-import 'package:teamdrt/Screens/Authenticate/Widgets/Sign%20Up.dart';
-import 'package:teamdrt/Screens/Authenticate/Widgets/background_painter.dart';
+import 'package:teamdrt/Screens/Authenticate/Widgets/otpEnter.dart';
 import 'package:teamdrt/config/Page_Enum.dart';
-import 'package:teamdrt/config/pallete.dart';
-import 'package:animations/animations.dart';
 
 // ignore: camel_case_types
 class presetScreen extends StatefulWidget {
@@ -20,7 +17,7 @@ class presetScreen extends StatefulWidget {
 class _presetScreenState extends State<presetScreen>
     with SingleTickerProviderStateMixin {
   AnimationController _controller;
-  ValueNotifier<LOGIN_PAGE> whichPage= ValueNotifier<LOGIN_PAGE>(LOGIN_PAGE.WELCOME);
+  ValueNotifier<LOGIN_PAGE> whichPage = ValueNotifier<LOGIN_PAGE>(LOGIN_PAGE.WELCOME);
 
   _presetScreenState();
 
@@ -50,7 +47,6 @@ class _presetScreenState extends State<presetScreen>
     return Scaffold(
       body: Stack(
         children: <Widget>[
-
           Positioned(
             top: 0,
             left: 0,
@@ -86,26 +82,23 @@ class _presetScreenState extends State<presetScreen>
                           child: child,
                         );
                       },
-                      child: value==LOGIN_PAGE.WELCOME
-                          ?welcomeScreen(
-                        key: const ValueKey('Welcome'),
-                          onClicked: (){
-                            whichPage.value=LOGIN_PAGE.SIGN_IN;
-                          }
-                      )
-                      :value==LOGIN_PAGE.SIGN_IN
-                          ? SignIn(
-                        key: const ValueKey('SignIn'),
-                        onRegisterClicked: () {
-                          whichPage.value=LOGIN_PAGE.SIGN_UP;
-                        },
-                      )
-                          : Register(
-                        key: const ValueKey('Register'),
-                        onSignInPressed: () {
-                          whichPage.value=LOGIN_PAGE.SIGN_IN;
-                        },
-                      ),
+                      child: value == LOGIN_PAGE.WELCOME
+                          ? welcomeScreen(
+                              key: const ValueKey('Welcome'),
+                              onClicked: () {
+                                whichPage.value = LOGIN_PAGE.SIGN_IN;
+                              })
+                          : value == LOGIN_PAGE.SIGN_IN || value == LOGIN_PAGE.SIGN_UP
+                              ? SignIn(
+                                  key: const ValueKey('SignIn'),
+                                  onRegisterClicked: () {
+                                    whichPage.value = LOGIN_PAGE.SIGN_UP;
+                                  },
+                                  onOTp: () {
+                                    whichPage.value = LOGIN_PAGE.OTP;
+                                  },
+                                )
+                              :OTPScreen(),
                     ),
                   );
                 },
@@ -115,17 +108,11 @@ class _presetScreenState extends State<presetScreen>
           Padding(
             padding: const EdgeInsets.only(bottom: 30),
             child: Align(
-              alignment: Alignment.bottomCenter,
-              child:Text(
-                "\u00a9 teamDrt 2021"
-              )
-
-            ),
+                alignment: Alignment.bottomCenter,
+                child: Text("\u00a9 teamDrt 2021")),
           ),
         ],
       ),
     );
   }
-
-
 }
